@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
               children: [
                 Padding(
                   padding: EdgeInsets.all(20.0),
-                  child: Text('Shoesz\n Collection',
+                  child: Text('Shoes\nCollection',
                     style: TextStyle(
                       fontSize: 35,
                       fontWeight: FontWeight.bold
