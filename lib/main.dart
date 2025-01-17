@@ -21,6 +21,14 @@ class MyApp extends StatelessWidget {
             fontWeight: FontWeight.bold,
             fontSize: 16,
           ),
+          border: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.black,
+            ),
+            borderRadius: BorderRadius.horizontal(
+              left: Radius.circular(100),
+            ),
+          ),
           prefixIconColor: Colors.black,
         ),
       ),
