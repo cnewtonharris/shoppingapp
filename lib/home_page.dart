@@ -40,18 +40,15 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
         child: Column(
           children: [
-            const Row(
+            Row(
               children: [
                 Padding(
-                  padding: EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(20.0),
                   child: Text('House of Binky',
-                    style: TextStyle(
-                      fontSize: 35,
-                      fontWeight: FontWeight.bold
-                    ),
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                 ),
-                Expanded(
+                const Expanded(
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: 'Search',
