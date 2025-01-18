@@ -1,16 +1,30 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+import 'global_variables.dart';
+
+class HomePage extends StatefulWidget {
   const HomePage ({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final List<String> filters = const [
     'All',
-    'Sneakers',
-    'Boots',
-    'Heels',
-    'Sandals',
-    'Flats',
+    'Prints',
+    'Mugs',
+    'Ribbon',
+    'Bags',
+    'GLK',
   ];
+  late String selectedFilter;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedFilter = filters[0];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,27 +74,42 @@ class HomePage extends StatelessWidget {
                   final filter = filters[index];
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: Chip(
-                      backgroundColor: const Color.fromRGBO(245, 247, 249, 1),
-                      side: const BorderSide(
-                        color: Color.fromRGBO(245, 247, 249, 1),
-                      ),
-                      label: Text(filter),
-                      labelStyle: const TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20,
-                          vertical: 15
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(100),
+                    child: GestureDetector(
+                      onTap: (){
+                        setState(() {
+                          selectedFilter = filter;
+                        });
+                      },
+                      child: Chip(
+                        backgroundColor: selectedFilter == filter
+                            ? Theme.of(context).colorScheme.primary
+                            : Color.fromRGBO(245, 247, 249, 1),
+                        side: const BorderSide(
+                          color: Color.fromRGBO(245, 247, 249, 1),
+                        ),
+                        label: Text(filter),
+                        labelStyle: const TextStyle(
+                          fontSize: 16,
+                          color: Colors.black,
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 15
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(100),
+                        ),
                       ),
                     ),
                   );
                 },
               ),
+            ),
+            ListView.builder(
+              itemCount: products.length,
+                itemBuilder: (context, index){
+                final product = products[index];
+                }
             ),
           ],
         ),
