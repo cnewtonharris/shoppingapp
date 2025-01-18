@@ -114,6 +114,8 @@ class _HomePageState extends State<HomePage> {
                       title: product['title'] as String,
                       price: product['price'] as double,
                       image: product['image'] as String,
+                      backgroundColor: index.isEven ? const Color.fromRGBO(
+                          147, 200, 243, 1.0) : Color.fromRGBO(211, 143, 205, 1.0),
                     );
                   },
               ),
