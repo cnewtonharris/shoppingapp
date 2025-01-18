@@ -33,6 +33,16 @@ class MyApp extends StatelessWidget {
           ),
           prefixIconColor: Colors.black,
         ),
+        textTheme: const TextTheme(
+          titleMedium: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+          bodySmall: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
+        )
       ),
       home: const HomePage(),
     );

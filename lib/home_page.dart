@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'global_variables.dart';
+import 'package:shoppingapp/product_card.dart';
+import 'package:shoppingapp/global_variables.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage ({super.key});
@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Padding(
                   padding: EdgeInsets.all(20.0),
-                  child: Text('Shoes\nCollection',
+                  child: Text('House of Binky',
                     style: TextStyle(
                       fontSize: 35,
                       fontWeight: FontWeight.bold
@@ -105,11 +105,18 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
             ),
-            ListView.builder(
-              itemCount: products.length,
-                itemBuilder: (context, index){
-                final product = products[index];
-                }
+            Expanded(
+              child: ListView.builder(
+                itemCount: products.length,
+                  itemBuilder: (context, index){
+                  final product = products[index];
+                  return ProductCard(
+                      title: product['title'] as String,
+                      price: product['price'] as double,
+                      image: product['image'] as String,
+                    );
+                  },
+              ),
             ),
           ],
         ),
