@@ -36,14 +36,3 @@ final products = [
     'size': ['S', 'M', 'L', 'XL'],
   }
 ];
-
-final cart = [
-  {
-    'id': 1,
-    'title': 'What The Duck',
-    'price': 20.00,
-    'image': 'assets/images/8001.jpg',
-    'description': 'A duck that is very cute and fluffy.',
-    'size': ['S', 'M', 'L', 'XL'],
-  }
-];
