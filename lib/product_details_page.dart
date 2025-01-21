@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shoppingapp/cart_provider.dart';
 
 class ProductDetailsPage extends StatefulWidget {
   final Map<String, Object> product;
@@ -13,6 +15,27 @@ class ProductDetailsPage extends StatefulWidget {
 
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
   String selectedSize = '';
+
+  void onTap() {
+    if (selectedSize != '') {
+      Provider.of<CartProvider>(context, listen: false).addProduct(
+        {
+          'id': widget.product['id'],
+          'title': widget.product['title'],
+          'price': widget.product['price'],
+          'image': widget.product['image'],
+          'description': widget.product['description'],
+          'size': selectedSize,
+        },
+      );
+    } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Please select a size')
+         ),
+        );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,12 +77,13 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                     scrollDirection: Axis.horizontal,
                     itemCount: (widget.product['size'] as List<String>).length,
                     itemBuilder: (context, index) {
-                      final size = (widget.product['size'] as List<String>)[index];
+                      final size =
+                          (widget.product['size'] as List<String>)[index];
 
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: GestureDetector(
-                          onTap: (){
+                          onTap: () {
                             setState(() {
                               selectedSize = size;
                             });
@@ -78,7 +102,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: ElevatedButton(
-                      onPressed: (){},
+                      onPressed: () {
+                        onTap();
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Theme.of(context).colorScheme.primary,
                         minimumSize: const Size(double.infinity, 50),
@@ -86,13 +112,13 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                           borderRadius: BorderRadius.circular(40),
                         ),
                       ),
-                      child: const Text('Add to Cart',
+                      child: const Text(
+                        'Add to Cart',
                         style: TextStyle(
                           fontSize: 20,
                           color: Colors.white,
                         ),
-                      )
-                  ),
+                      )),
                 ),
               ],
             ),
